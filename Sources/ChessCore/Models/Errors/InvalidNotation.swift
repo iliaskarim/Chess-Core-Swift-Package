@@ -10,5 +10,5 @@ enum InvalidNotation: Error {
   case ambiguous
   case badMove
   case badPunctuation(_: BadPunctuation)
-  case unparseable(notation: String)
+  case unparseable
 }
