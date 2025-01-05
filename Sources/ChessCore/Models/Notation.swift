@@ -3,14 +3,14 @@ import Foundation
 // MARK: - Notation
 
 enum Notation {
-  enum Play {
+  enum Play: Hashable {
     enum Castle {
       case long
       case short
     }
 
     case castle(castle: Castle)
-    case translation(originFile: Square.File?, originRank: Square.Rank?, figure: Piece.Figure, isCapture: Bool,
+    case translation(originFile: Square.File?, originRank: Square.Rank?, figure: Piece.Figure, isCapture: Bool, 
                      promotion: Piece.Figure?, targetSquare: Square)
   }
 

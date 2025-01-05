@@ -2,17 +2,17 @@ import XCTest
 @testable import ChessCore
 
 final class ChessTests: XCTestCase {
- func testFirstMoves() throws {
-    for move in ["a3", "a4", "b3", "b4", "c3", "c4", "d3", "d4", "e3", "e4", "f3", "f4", "g3", "g4", "h3", "h4"] {
-      var game = Game()
-      try game.move(notation: move)
-      print(game)
-    }
+  func testFirstMoves() throws {
+    let game = Game()
 
-    for move in ["Na3", "Nc3", "Nf3", "Nh3"] {
-      var game = Game()
-      try game.move(notation: move)
-      print(game)
+    XCTAssertTrue([.init(notation: "a3")!, .init(notation: "c3")!].allSatisfy(game.board.moves(from: .init(notation: "b1")!).contains))
+    XCTAssertTrue([.init(notation: "f3")!, .init(notation: "h3")!].allSatisfy(game.board.moves(from: .init(notation: "g1")!).contains))
+
+    for file in Square.File.allCases {
+      XCTAssertTrue([
+        .init(file: file, rank: .three),
+        .init(file: file, rank: .four)
+      ].allSatisfy(game.board.moves(from: .init(file: file, rank: .two)).contains))
     }
   }
 
@@ -26,6 +26,7 @@ final class ChessTests: XCTestCase {
     try game.move(notation: "Nf6")
     try game.move(notation: "Qxf7#")
     print(game)
+    XCTAssertTrue(game.isGameOver)
   }
 
   func testStalemate() throws {
