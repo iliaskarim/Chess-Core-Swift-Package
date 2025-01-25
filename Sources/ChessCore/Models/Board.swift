@@ -88,17 +88,18 @@ private extension Vector {
 
 /// A model representing a chess board.
 ///
-/// Chess boards consist of black and white figures arranged on an eight-by-eight grid.
+/// Chess boards consist of black and white figures arranged on an 8x8  grid.
 public struct Board {
   typealias Mutation = (Board) -> (Board)
 
+  /// Dictionary representing the pieces on the chessboard.
   public let pieces: [Square: Piece]
 
   weak var dataSource: BoardDataSource?
 }
 
 public extension Board {
-  /// Conventional board setup
+  /// Conventional board setup.
   static var board: Board {
     Board(pieces: Piece.Color.allCases.flatMap { color in
       Piece.Figure.allCases.map { figure in
@@ -131,7 +132,7 @@ public extension Board {
     })
   }
 
-  /// Possible moves from a square
+  /// Possible moves from a square.
   /// - Parameter square: Source square
   /// - Returns: Destination squares
   func moves(from square: Square) -> [Square] {

@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build all",
+      "type": "shell",
+      "command": "swift build --build-tests -Xswiftc -diagnostic-style=llvm",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Build docs",
+      "type": "shell",
+      "command": "xcodebuild docbuild -scheme ChessCore -destination name=\"Any Mac\" -derivedDataPath build && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/docc process-archive transform-for-static-hosting --output-path ./docs ./build/Build/Products/Debug/ChessCore.doccarchive",
+      "problemMatcher": []
+    },
+    {
+      "label": "Serve docs",
+      "type": "shell",
+      "command": "python3 -m http.server --directory ./docs",
+      "problemMatcher": []
+    },
+    {
+      "label": "Open docs in browser",
+      "type": "shell",
+      "command": "open http://localhost:8000/documentation/chesscore",
+      "problemMatcher": []
+    }
+  ]
+}

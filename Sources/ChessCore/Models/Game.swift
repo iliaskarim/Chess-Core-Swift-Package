@@ -44,7 +44,7 @@ public class Game: ObservableObject {
     case toMove(Piece.Color)
   }
 
-  /// Game state
+  /// Game state.
   public var status: Status {
     if case let .end(victor) = moves.last {
       return victor.flatMap { color in
@@ -73,10 +73,10 @@ public class Game: ObservableObject {
     return .toMove(moveColor)
   }
 
-  /// Game board
+  /// Game board.
   @Published public private(set) var board: Board
 
-  /// Game over
+  /// Game over.
   public var isGameOver: Bool {
     if case .toMove = status {
       return false
@@ -86,7 +86,7 @@ public class Game: ObservableObject {
 
   private var moves = [Notation]()
 
-  /// Move
+  /// Move.
   /// - Parameter notation: Move notation
   public func move(notation: String) throws {
     guard let notation = Notation(notation: notation) else {
@@ -191,7 +191,8 @@ public class Game: ObservableObject {
     board = mutatedBoard
   }
 
-  /// Designated initializer
+  /// Designated initializer.
+  /// - Parameter board: Game board
   public init(board: Board = .board) {
     self.board = board
     self.board.dataSource = self

@@ -3,7 +3,7 @@
 
 /// A model representing a square on a chess board.
 public struct Square: Hashable {
-  /// File
+  /// A model representing the file of a board square.
   public enum File: Int, CaseIterable {
     case a = 1, b, c, d, e, f, g, h
 
@@ -15,7 +15,7 @@ public struct Square: Hashable {
     }
   }
 
-  /// Rank
+  /// A model representing the rank of a board square.
   public enum Rank: Int, CaseIterable {
     case one = 1, two, three, four, five, six, seven, eight
 
@@ -27,23 +27,23 @@ public struct Square: Hashable {
     }
   }
 
-  /// File
+  /// Square file.
   public let file: File
 
-  /// Rank
+  /// Square rank.
   public let rank: Rank
 
-  /// Designated initializer
+  /// Designated initializer.
   /// - Parameters:
-  ///   - file: file
-  ///   - rank: rank
+  ///   - file: Square file
+  ///   - rank: Square rank
   public init(file: File, rank: Rank) {
     self.file = file
     self.rank = rank
   }
 
-  /// Convenience initializer
-  /// - Parameter string: notation
+  /// Convenience initializer.
+  /// - Parameter string: Square notation
   public init?(notation: String) {
     guard let file = notation.first.map(File.init) ?? nil,
           let rank = notation.last.map(Rank.init) ?? nil,

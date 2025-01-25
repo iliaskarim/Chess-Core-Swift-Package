@@ -3,13 +3,13 @@
 
 /// A model representing a chess piece.
 public struct Piece: Equatable {
-  /// Color
+  /// A model representing the color of a chess piece.
   public enum Color: String, CaseIterable {
     case white
     case black
   }
 
-  /// Figure
+  /// A model representing the figure of a chess piece.
   public enum Figure: String, CaseIterable {
     case rook = "R"
     case knight = "N"
@@ -23,16 +23,16 @@ public struct Piece: Equatable {
     }
   }
 
-  /// Color
+  /// Piece color.
   public let color: Color
 
-  /// Figure
+  /// Piece figure.
   public let figure: Figure
 
-  /// Designated initializer
+  /// Designated initializer.
   /// - Parameters:
-  ///   - color: Color
-  ///   - figure: Figure
+  ///   - color: Piece color
+  ///   - figure: Piece figure
   public init(color: Color, figure: Figure) {
     self.color = color
     self.figure = figure
